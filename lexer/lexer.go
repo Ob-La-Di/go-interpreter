@@ -69,7 +69,7 @@ func (l *Lexer) NextToken() token.Token {
 		tok.Type = token.EOF
 	default:
 		if isLetter(l.ch) {
-			tok.Literal = l.readIndentifier()
+			tok.Literal = l.readIdentifier()
 			tok.Type = token.LookupIdent(tok.Literal)
 
 			return tok
@@ -104,7 +104,7 @@ func (l *Lexer) skipWhiteSpace() {
 	}
 }
 
-func (l *Lexer) readIndentifier() string {
+func (l *Lexer) readIdentifier() string {
 	position := l.position
 	for isLetter(l.ch) {
 		l.readChar()
